@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Suhas is the dumbest person on earth</title>
+    <style>
+      .row div {
+        padding: 10px;
+        border: 10px solid orange;
+        height: 130px;
+        width: 130px;
+        float: left;
+      }
+      .red {
+        color: royalblue;
+      }
+      #tammu {
+        float: right;
+        padding-left: 0px;
+        border: 10px solid red;
+        height: 300px;
+        width: 300px;
+      }
+      .row {
+        clear: both;
+      }
+      #sujju {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="red">
+      Stupid dumbo Suhas, click here to play Srujan's game.<br />
+    </h1>
+    <div id="sujju">
+      <div>
+        <div>
+          <div class="row">
+            <div id="0_0" onclick="place(this)"></div>
+            <div id="1_0" onclick="place(this)"></div>
+            <div id="2_0" onclick="place(this)"></div>
+          </div>
+          <div class="row">
+            <div id="0_1" onclick="place(this)"></div>
+            <div id="1_1" onclick="place(this)"></div>
+            <div id="2_1" onclick="place(this)"></div>
+          </div>
+          <div class="row">
+            <div id="0_2" onclick="place(this)"></div>
+            <div id="1_2" onclick="place(this)"></div>
+            <div id="2_2" onclick="place(this)"></div>
+          </div>
+        </div>
+      </div>
+      <div id="tammu">
+        <img
+          src="images/suhas.jpg"
+          height="300px"
+          width="300px"
+        />
+      </div>
+    </div>
+    <script>
+      var currentPlayer = "Srujan is the best";
+      var won = false;
+      function place(box) {
+        if (box.innerText != "" || won) return;
+        box.innerText = currentPlayer;
+        currentPlayer == "Srujan is the best" ? (currentPlayer = "Suhas is the worst") : (currentPlayer = "Srujan is the best");
+        checkGameBoard();
+      }
+      function checkGameBoard() {
+        for (var i = 0; i <= 2; i++) {
+          checkWinner(
+            document.getElementById(i + "_0").innerText,
+            document.getElementById(i + "_1").innerText,
+            document.getElementById(i + "_2").innerText
+          );
+          checkWinner(
+            document.getElementById("0_" + i).innerText,
+            document.getElementById("1_" + i).innerText,
+            document.getElementById("2_" + i).innerText
+          );
+        }
+        checkWinner(
+          document.getElementById("0_0").innerText,
+          document.getElementById("1_1").innertext,
+          document.getElementById("2_2").innertext
+        );
+        checkWinner(
+          document.getElementById("0_2").innerText,
+          document.getElementById("1_1").innerText,
+          document.getElementById("2_0").innerText
+        );
+      }
+      function checkWinner(first, second, third) {
+        if (first != "" && first == second && first == third) {
+          alert("Suhas lost!");
+          won = true;
+        }
+      }
+    </script>
+  </body>
+</html>
